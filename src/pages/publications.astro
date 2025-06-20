@@ -1,0 +1,47 @@
+---
+import PublicationItem from "../components/PublicationItem.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+    title="Publications"
+    description="A collection of my publications and research papers."
+>
+    <PublicationItem
+        title="EDCC 2025 - Device Identity Bootstrapping in Constrained Environments: A BLE-based BRSKI Extension"
+        description="Language: English - EDCC 2025 Paper - This paper presents a novel approach to device identity bootstrapping in constrained environments, leveraging Bluetooth Low Energy (BLE) to extend the BRSKI protocol for enhanced security and usability."
+        date="10 April, 2025"
+        url="https://seclab.cs.hm.edu/assets/pdf/jk-brski-2025-pp.pdf"
+    ></PublicationItem>
+    <PublicationItem
+        title="Secure IoT Bootstrapping: A BRSKI Extension for Constrained Devices"
+        description="Language: English - Master Thesis - This thesis explores the challenges of securely bootstrapping IoT devices in constrained environments, proposing an extension to the BRSKI protocol to enhance security and usability."
+        date="17 Feb, 2025"
+        url="/files/master_thesis_julian_krieger.pdf"
+    >
+    </PublicationItem>
+    <PublicationItem
+        title={"Programming Languages and Target Platforms in Malware - A Trend Analysis"}
+        description={"Language: English - Paper exploring how increasingly popular programming languages affects the malware industry."}
+        date="15 Feb, 2023"
+        url={"/files/programming_language_malware_trends.pdf"}
+    />
+    <PublicationItem
+        title={"About the correlation between website loading speeds and user bounce rates"}
+        description="Language: German - Paper exploring the correlation between how long it takes a website to load its content and the eagerness of users to cancel loading and subsequently leaving the site early."
+        date="15 July, 2019"
+        url={"/files/zusammenhang_ladenzeiten_absprungraten.pdf"}
+    />
+    <PublicationItem
+        title={"Implementing secure home networks for IoT Devices"}
+        description="Language: German - Paper about state of the art techniques used to build and harden secure IoT home networks via StrongSwan"
+        date="30 August, 2019"
+        url={"/files/secure_homenetwork.pdf"}
+    />
+    <PublicationItem
+        title={"Development of an internationalization solution for the content management system Scrivito including evaluation of the system and application on an international website."}
+        description="Language: German - Bachelor Thesis - Evaluation and comparison of a content management system regarding different popular industry solutions that was of interest for my employer at the time. The thesis' second part focused on a proof-of-concept of an internationalisation plugin since Scrivito itself was not equipped with a sufficient translation API at the time of writing."
+        date="30 August, 2019"
+        url={"/files/bachelor_thesis.pdf"}
+    />
+</Layout>

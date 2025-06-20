@@ -1,0 +1,28 @@
+---
+interface Props {
+    title: string;
+    date: string;
+    description: string;
+    url: string;
+}
+
+const { title, date, description, url } = Astro.props as Props;
+---
+<style>
+.publication-item {
+    margin-bottom: 4rem;
+}
+
+.date {
+    margin-bottom: -.5rem;
+}
+</style>
+<div class="publication-item">
+    <h5 class="date">{date}</h5>
+    <a href={url} class="title-link">
+        <h3 class="title">
+            {title}
+        </h3>
+    </a>
+    <p>{description}</p>
+</div>

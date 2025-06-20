@@ -1,0 +1,61 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<style lang="scss">
+	.paragraph {
+		p,
+		pre {
+			margin-bottom: 1.8rem;
+		}
+
+		ul {
+			list-style-type: disc;
+			padding-left: 40px;
+
+			li {
+				font-size: 14px;
+			}
+		}
+	}
+
+	a {
+		display: inline;
+	}
+
+	a > * {
+		display: inline;
+	}
+</style>
+<Layout title={"Blog"} description={SITE_DESCRIPTION}>
+	<section>
+		<ul>
+			{
+				posts.map((post) => (
+					<li>
+						<a href={`/blog/${post.id}/`}>
+							<p class="date">
+								<FormattedDate date={post.data.date} />
+							</p>
+							<p class="title">- {post.data.title}</p>
+							<p class="draft">
+								{post.data.draft && "- [DRAFT]"}
+							</p>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</Layout>

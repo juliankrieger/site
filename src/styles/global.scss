@@ -1,0 +1,101 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+
+@use "./fonts";
+@use "./colors";
+
+body {
+	font-family: fonts.$font-primary;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	background-color: colors.$color-bg;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	color: colors.$color-text;
+  min-height: 100vh;
+	display: flex;
+  flex-direction: column;
+  line-height: 1.4em;
+}
+
+main {
+	//width: 720px;
+	//max-width: calc(100% - 2em);
+	margin: 0 auto;
+	max-width: 70vw;
+	//padding: 3em 1em;
+  
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+a {
+  color: colors.$color-primary;
+  text-decoration: underline;
+  &:visited {
+    color: colors.$color-text-secondary;
+  }
+}
+pre, code, p {
+  font-size: 14px;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1em;
+  color: colors.$color-primary;
+}
+
+pre {
+  background-color: #f5f2f0;
+  line-height: 22px;
+
+  code {
+    border-radius: 0;
+    background-color: unset;
+  }
+}
+
+p {
+  code {
+    background-color: #F97583;
+  }
+}
+
+code {
+  //color: red;
+  border-radius: 2px;
+  padding: 1px;
+  background-color: #f5f2f0;
+}
+ 
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  ul {
+    padding-inline-start: 20px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+pre {  
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}

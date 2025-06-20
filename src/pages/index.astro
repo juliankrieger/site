@@ -1,0 +1,64 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h5></h5>
+			<strong>Julian Krieger</strong>
+			<br />
+			<i
+				>Fullstack Developer - Site Reliability Engineer - Rust & Go
+				Enthusiast</i
+			>
+			<p>Phd Student @ <a href="https://seclab.cs.hm.edu/team/">University of Applied Science Munich</a></p>
+			<p>Orcid: <a href="https://orcid.org/0009-0005-3000-0727">0009-0005-3000-0727</a></p>
+			<br />
+			<a href="/files/resume.pdf">Full Resume</a>
+			<p>==============</p>
+			<div>
+				<h5>### Skills</h5>
+				<ul>
+					<li>
+						- Frontend Development:
+						<ul>- JavaScript, TypeScript</ul>
+						<ul>- Vue.js v2 &amp; v3, Vuetify</ul>
+						<ul>- React.js, Redux, Next.js, Gatsby</ul>
+						<ul>- Shopify</ul>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						- Backend Development:
+						<ul>- Node.js, Rust, Python, GO, C#</ul>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						- Deployment:
+						<ul>- Docker, Netlify, Vercel</ul>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<h5>### About</h5>
+				<p>
+					I enjoy learning about new programming languages in my free
+					time. Recently, I have been interested in <a
+						href={"https://www.rust-lang.org/"}>Rust</a
+					>.
+				</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

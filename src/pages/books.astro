@@ -1,0 +1,61 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Book from "../components/Book.astro";
+import Layout from "../layouts/Layout.astro";
+
+interface OpenLibraryResponse {
+    reading_log_entries: [
+        {
+            work: {
+                title: string;
+                author_names: string[];
+                first_publish_year: number;
+                cover_edition_key: string;
+            };
+        },
+    ];
+}
+
+const OPEN_LIBRARY_URL =
+    "https://openlibrary.org/people/juliankrieger/books/want-to-read.json";
+const res = await fetch(OPEN_LIBRARY_URL);
+const books: OpenLibraryResponse = await res.json();
+const sortedBooks = books.reading_log_entries
+    .filter((e) => !!e.work.title)
+    .sort((a, b) => a.work.title.localeCompare(b.work.title));
+---
+
+<Layout title="Books">
+    <p>
+        If you are looking to gift me something (for whatever reason), you can
+        find <a
+            href={"https://www.amazon.de/hz/wishlist/ls/DI5WT15AHPLM?ref_=wl_share"}
+            >my Amazon wish list here</a
+        >
+    </p>
+    <br />
+    <p>
+        Note: I am currently building a small webservice to display my wanted
+        items here. Amazon has sadly shut down its wishlist API.
+    </p>
+    <p>
+        Thanks to <b>Open Library</b>, you can find a list of books I want to
+        read below:
+    </p>
+    <ul>
+        {
+            sortedBooks.map((entry) => (
+                <li>
+                    <Book
+                        title={entry.work.title}
+                        author={entry.work.author_names.join(", ")}
+                        pubDate={entry.work.first_publish_year}
+                    />
+                </li>
+            ))
+        }
+    </ul>
+</Layout>

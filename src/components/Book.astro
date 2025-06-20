@@ -1,0 +1,26 @@
+---
+import type { string } from "astro:schema";
+import capitalize from "capitalize";
+
+interface Props {
+    title: string;
+    author: string;
+    pubDate: number;
+}
+
+const { title, author, pubDate }: Props = Astro.props;
+
+const formattedTitle = capitalize.words(title);
+
+const searchString = title + " " + author;
+const normalizedSearchString = searchString.replace(/[^a-zA-Z0-9 ]/g, " ");
+const searchWords = normalizedSearchString
+    .split(" ")
+    .map((w) => w.toLowerCase())
+    .join("+");
+
+const link = `https://www.amazon.de/-/en/s?k=${searchWords}&dm=true&language=en`;
+---
+<a href={link}>
+    {formattedTitle} by {author} - ({pubDate})
+</a>
