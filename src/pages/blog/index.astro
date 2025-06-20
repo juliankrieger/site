@@ -8,7 +8,9 @@ import FormattedDate from "../../components/FormattedDate.astro";
 import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 
-const posts = (await getCollection("blog")).sort(
+const posts = (await getCollection("blog"))
+.filter((post) => post.data.draft !== true)
+.sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 ---
