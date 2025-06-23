@@ -1,0 +1,49 @@
+---
+interface Props {
+    top?: boolean;
+}
+
+const { top = false } = Astro.props;
+---
+<style lang="scss" is:global>
+    .title.default .title-slot > * {
+        margin: 0;
+    }
+</style>
+<style lang="scss">
+    .title.top {
+        margin-bottom: 1em;
+        padding: 1em 0;
+        text-align: center;
+        line-height: 1;
+    }
+
+    .title.default {
+        display: inline-block;
+        padding: 0;
+    }
+
+    .title .title-slot {
+        margin: 0 0 0.5em 0;
+    }
+    .date {
+        margin-bottom: 0.5em;
+        color: rgb(var(--gray));
+    }
+    .last-updated-on {
+        font-style: italic;
+    }
+
+    .title.default hr {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+</style>
+<div class=`title ${top ? 'top' : 'default'}`>
+    <div class="title-slot">
+        <slot />
+    </div>
+    <hr />
+</div>

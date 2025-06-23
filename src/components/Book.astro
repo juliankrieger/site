@@ -6,9 +6,10 @@ interface Props {
     title: string;
     author: string;
     pubDate: number;
+    renderLink?: boolean;
 }
 
-const { title, author, pubDate }: Props = Astro.props;
+const { title, author, pubDate, renderLink = false }: Props = Astro.props;
 
 const formattedTitle = capitalize.words(title);
 
@@ -21,6 +22,12 @@ const searchWords = normalizedSearchString
 
 const link = `https://www.amazon.de/-/en/s?k=${searchWords}&dm=true&language=en`;
 ---
-<a href={link}>
+{renderLink ? (
+  <a href={link}>
     {formattedTitle} by {author} - ({pubDate})
-</a>
+  </a>
+) : (
+  <span>
+    {formattedTitle} by {author} - ({pubDate})
+  </span>
+)}

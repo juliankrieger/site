@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Book from "../components/Book.astro";
 import Layout from "../layouts/Layout.astro";
+import Title from "../components/Title.astro";
 
 interface OpenLibraryResponse {
     reading_log_entries: [
@@ -19,16 +20,29 @@ interface OpenLibraryResponse {
     ];
 }
 
-const OPEN_LIBRARY_URL =
+const getBooks = async (url: string) => {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Failed to fetch data from ${url}`);
+    }
+    const json: OpenLibraryResponse = await response.json();
+    const sorted = json.reading_log_entries
+        .filter((e) => !!e.work.title)
+        .sort((a, b) => a.work.title.localeCompare(b.work.title));
+    return sorted;
+};
+
+const OPEN_LIBRARY_WANT_TO_READURL =
     "https://openlibrary.org/people/juliankrieger/books/want-to-read.json";
-const res = await fetch(OPEN_LIBRARY_URL);
-const books: OpenLibraryResponse = await res.json();
-const sortedBooks = books.reading_log_entries
-    .filter((e) => !!e.work.title)
-    .sort((a, b) => a.work.title.localeCompare(b.work.title));
+
+const OPEN_LIBRARY_ALREADY_READ_URL =
+    "https://openlibrary.org/people/juliankrieger/books/already-read.json";
+const wantToReadBooks = await getBooks(OPEN_LIBRARY_WANT_TO_READURL);
+const alreadyReadBooks = await getBooks(OPEN_LIBRARY_ALREADY_READ_URL);
 ---
 
 <Layout title="Books">
+    <Title><h3>Reading List</h3></Title>
     <p>
         If you are looking to gift me something (for whatever reason), you can
         find <a
@@ -47,7 +61,23 @@ const sortedBooks = books.reading_log_entries
     </p>
     <ul>
         {
-            sortedBooks.map((entry) => (
+            wantToReadBooks.map((entry) => (
+                <li>
+                    <Book
+                        title={entry.work.title}
+                        author={entry.work.author_names.join(", ")}
+                        pubDate={entry.work.first_publish_year}
+                        renderLink
+                    />
+                </li>
+            ))
+        }
+    </ul>
+    <Title><h3>Books I read</h3></Title>
+
+    <ul>
+        {
+            alreadyReadBooks.map((entry) => (
                 <li>
                     <Book
                         title={entry.work.title}
