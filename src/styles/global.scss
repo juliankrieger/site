@@ -29,6 +29,13 @@ main {
 	max-width: 70vw;
 	//padding: 3em 1em;
   
+  // on 2560px screen, limit the width to 1200px
+  @media (min-width: 1920px) {
+    max-width: 1200px;
+  }
+  
+
+  
 }
 a {
   color: inherit;
