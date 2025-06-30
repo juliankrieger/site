@@ -39,10 +39,9 @@ a {
   box-sizing: border-box;
 }
 a {
-  color: colors.$color-primary;
   text-decoration: underline;
   &:visited {
-    color: colors.$color-text-secondary;
+    color: colors.$color-bg-secondary;
   }
 }
 pre, code, p {
@@ -50,11 +49,9 @@ pre, code, p {
 }
 h1, h2, h3, h4, h5, h6 {
   line-height: 1em;
-  color: colors.$color-primary;
 }
 
 pre {
-  background-color: #f5f2f0;
   line-height: 22px;
 
   code {
@@ -65,15 +62,15 @@ pre {
 
 p {
   code {
-    background-color: #F97583;
+    color: colors.$color-white;
+    padding: 2px 6px;
+    background-color: colors.$color-code;
   }
 }
 
 code {
-  //color: red;
   border-radius: 2px;
   padding: 1px;
-  background-color: #f5f2f0;
 }
  
 
