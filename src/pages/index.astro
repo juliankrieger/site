@@ -32,6 +32,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 		gap: 100px;
 		padding: 20px;
 	}
+
+	// on mobile, make the sections stack
+		@media (max-width: 768px) {
+			main {
+				grid-template-columns: 1fr;
+				gap: 20px;
+			}
+			.left-section,
+			.right-section {
+				text-align: center;
+			}
+		}
+	}
+
 </style>
 
 <html lang="en">
