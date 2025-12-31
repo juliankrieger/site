@@ -1,0 +1,48 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    date: string;
+    vendor?: string;
+}
+
+const { title, description, date, vendor } = Astro.props;
+---
+
+<style lang="scss">
+    .finding {
+        margin-bottom: 2em;
+        padding: 1.5em;
+        border-left: 4px solid #666;
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    .finding-title {
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .finding-vendor {
+        font-size: 0.9em;
+        color: rgb(var(--gray));
+        margin-bottom: 0.5em;
+    }
+
+    .finding-description {
+        margin: 0.5em 0;
+        line-height: 1.6;
+    }
+
+    .finding-date {
+        font-size: 0.85em;
+        color: rgb(var(--gray));
+        margin-top: 0.5em;
+    }
+</style>
+
+<div class="finding">
+    <h3 class="finding-title">{title}</h3>
+    {vendor && <div class="finding-vendor">Vendor: {vendor}</div>}
+    <p class="finding-description">{description}</p>
+    <div class="finding-date">{date}</div>
+</div>

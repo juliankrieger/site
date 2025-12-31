@@ -1,0 +1,28 @@
+---
+import SecurityFinding from "../components/SecurityFinding.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+    title="Security Findings"
+    description="A collection of security vulnerabilities and findings I've discovered."
+>
+    <SecurityFinding
+        title="Open Docker Image Registry"
+        description="Discovered an exposed Docker image registry without authentication, allowing unauthorized access to private container images."
+        vendor="Bauermedia / Eventim / Atlantismedia"
+        date="2023-6-27"
+    />
+    <SecurityFinding
+        title="Stored XSS Vulnerability"
+        description="Found a cross-site scripting (XSS) vulnerability in the web application allowing arbitrary JavaScript execution."
+        vendor="BayZeit"
+        date="2025-14-03"
+    />
+    <SecurityFinding
+        title="Multiple XSS Vulnerabilities"
+        description="Identified and reported multiple cross-site scripting (XSS) vulnerabilities in the campus management system."
+        vendor="Primus"
+        date="2025-28-04"
+    />
+</Layout>
